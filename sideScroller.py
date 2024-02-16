@@ -16,19 +16,24 @@ bgX = 0
 bgX2 = bg.get_width()
 
 clock = pygame.time.Clock()
-
+# "C:\\Users\\rgandhi\\3D Objects\\8.png"
+# "C:\\Users\\rgandhi\\3D Objects\\S2.png"
 
 class player(object):
-    run = [pygame.image.load(os.path.join('images', str(x) + '.png')) for x in range(8, 16)]
-    jump = [pygame.image.load(os.path.join('images', str(x) + '.png')) for x in range(1, 8)]
-    slide = [pygame.image.load(os.path.join('images', 'S1.png')), pygame.image.load(os.path.join('images', 'S2.png')),
-             pygame.image.load(os.path.join('images', 'S2.png')), pygame.image.load(os.path.join('images', 'S2.png')),
-             pygame.image.load(os.path.join('images', 'S2.png')), pygame.image.load(os.path.join('images', 'S2.png')),
-             pygame.image.load(os.path.join('images', 'S2.png')), pygame.image.load(os.path.join('images', 'S2.png')),
-             pygame.image.load(os.path.join('images', 'S3.png')), pygame.image.load(os.path.join('images', 'S4.png')),
-             pygame.image.load(os.path.join('images', 'S5.png'))]
-
-    fall = pygame.image.load(os.path.join('images', '0.png'))
+    run = [pygame.image.load(os.path.join('C:\\Users\\rgandhi\\3D Objects\\', str(x) + '.png')) for x in range(8, 16)]
+    jump = [pygame.image.load(os.path.join('C:\\Users\\rgandhi\\3D Objects\\', str(x) + '.png')) for x in range(1, 8)]
+    slide = [pygame.image.load(os.path.join('C:\\Users\\rgandhi\\3D Objects\\', 'S1.png')),
+             pygame.image.load(os.path.join('C:\\Users\\rgandhi\\3D Objects\\', 'S2.png')),
+             pygame.image.load(os.path.join('C:\\Users\\rgandhi\\3D Objects\\', 'S2.png')),
+             pygame.image.load(os.path.join('C:\\Users\\rgandhi\\3D Objects\\', 'S2.png')),
+             pygame.image.load(os.path.join('C:\\Users\\rgandhi\\3D Objects\\', 'S2.png')),
+             pygame.image.load(os.path.join('C:\\Users\\rgandhi\\3D Objects\\', 'S2.png')),
+             pygame.image.load(os.path.join('C:\\Users\\rgandhi\\3D Objects\\', 'S2.png')),
+             pygame.image.load(os.path.join('C:\\Users\\rgandhi\\3D Objects\\', 'S2.png')),
+             pygame.image.load(os.path.join('C:\\Users\\rgandhi\\3D Objects\\', 'S3.png')),
+             pygame.image.load(os.path.join('C:\\Users\\rgandhi\\3D Objects\\', 'S4.png')),
+             pygame.image.load(os.path.join('C:\\Users\\rgandhi\\3D Objects\\', 'S5.png'))]
+    fall = pygame.image.load(os.path.join('C:\\Users\\rgandhi\\3D Objects\\', '0.png'))
     jumpList = [1, 1, 1, 1, 1, 1, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 4, 4, 4, 4, 4,
                 4, 4, 4, 4, 4, 4, 4, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, -1, -1,
                 -1, -1, -1, -1, -2, -2, -2, -2, -2, -2, -2, -2, -2, -2, -2, -2, -3, -3, -3, -3, -3, -3, -3, -3, -3, -3,
@@ -84,7 +89,7 @@ class player(object):
             win.blit(self.run[self.runCount // 6], (self.x, self.y))
             self.runCount += 1
             self.hitbox = (self.x + 4, self.y, self.width - 24, self.height - 13)
-        pygame.draw.rect(win, (255, 0, 0), self.hitbox, 2)
+        #pygame.draw.rect(win, (255, 0, 0), self.hitbox, 2)
 
 
 class saw(object):
@@ -107,7 +112,7 @@ class saw(object):
             self.count = 0
         win.blit(pygame.transform.scale(self.img[self.count//2], (64, 64)), (self.x, self.y))
         self.count += 1
-        pygame.draw.rect(win, (255, 0, 0), self.hitbox, 2)
+        #pygame.draw.rect(win, (255, 0, 0), self.hitbox, 2)
 
     def collide(self, rect):
         if rect[0] + rect[2] > self.hitbox[0] and rect[0] < self.hitbox[0] + self.hitbox[2]:
@@ -122,7 +127,7 @@ class spike(saw):
     def draw(self, win):
         self.hitbox = (self.x + 10, self.y, 28, 315)
         win.blit(self.img, (self.x, self.y))
-        pygame.draw.rect(win, (255, 0, 0), self.hitbox, 2)
+        #pygame.draw.rect(win, (255, 0, 0), self.hitbox, 2)
 
     def collide(self, rect):
         if rect[0] + rect[2] > self.hitbox[0] and rect[0] < self.hitbox[0] + self.hitbox[2]:
@@ -203,7 +208,7 @@ while run:
         runner.draw(win)
         for x in objects:
             x.draw(win)
-        font = pygame.font.SysFont('comicsans', 30)
+        font = pygame.font.SysFont('times new roman', 30)
         text = font.render('Score:' + str(score), 1, (255, 255, 255))
         win.blit(text, (700, 10))
 
